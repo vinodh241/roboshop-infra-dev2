@@ -15,7 +15,7 @@ module "vpc" {
 }
 
 
-output "vpc_ids" {
-  value = module.vpc.public_subent_ids
+# output "vpc_ids" {
+#   value = module.vpc.public_subent_ids
   
-}
+# }

@@ -1,27 +1,27 @@
 module "forntend" {
   # source         = "../../terraform-aws-sggroup2"
-  source = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
+  source         = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
   project        = var.project
   environment    = var.environment
   sg_name        = var.forntend_sg_name
   sg_description = var.forntend_sg_description
-  vpc_id = local.vpc_id
+  vpc_id         = local.vpc_id
 
-} 
+}
 ###################################################################################################
 
 ## bastion 
 
 module "bastion" {
   # source         = "../../terraform-aws-sggroup2"
-  source = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
+  source         = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
   project        = var.project
   environment    = var.environment
   sg_name        = var.bastion_sg_name
   sg_description = var.bastion_sg_description
-  vpc_id = local.vpc_id
+  vpc_id         = local.vpc_id
 
-} 
+}
 
 
 ## bastion accepting conections from my laptop 
@@ -42,36 +42,36 @@ resource "aws_security_group_rule" "bastion_laptop" {
 
 module "backend_alb" {
   # source         = "../../terraform-aws-sggroup2"
-  source = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
+  source         = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
   project        = var.project
   environment    = var.environment
   sg_name        = "backend-alb"
   sg_description = "for backend_alb"
-  vpc_id = local.vpc_id
+  vpc_id         = local.vpc_id
 
-} 
+}
 
 ## backend ALB accepting conections from bastion host or port no 80  
 
 resource "aws_security_group_rule" "backend_alb_bastion" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
+  type                     = "ingress"
+  from_port                = 80
+  to_port                  = 80
+  protocol                 = "tcp"
   source_security_group_id = module.bastion.sg_id
-  security_group_id = module.backend_alb.sg_id
+  security_group_id        = module.backend_alb.sg_id
 }
 
 ##backend ALB accepting conections from VPN  host or port no 80  
 
 
 resource "aws_security_group_rule" "backend_alb_vpn" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
+  type                     = "ingress"
+  from_port                = 80
+  to_port                  = 80
+  protocol                 = "tcp"
   source_security_group_id = module.vpn.sg_id
-  security_group_id = module.backend_alb.sg_id
+  security_group_id        = module.backend_alb.sg_id
 
 
 }
@@ -85,14 +85,14 @@ resource "aws_security_group_rule" "backend_alb_vpn" {
 
 module "vpn" {
   # source         = "../../terraform-aws-sggroup2"
-  source = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
+  source         = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
   project        = var.project
   environment    = var.environment
   sg_name        = "vpn"
   sg_description = "for vpn"
-  vpc_id = local.vpc_id
+  vpc_id         = local.vpc_id
 
-} 
+}
 
 
 ## VPN Ports are 22, 1194, 943 , 443 --> VPN  
@@ -136,4 +136,122 @@ resource "aws_security_group_rule" "vpn_943" {
 }
 ############################################################################################################
 
+## Mongodb Security groups
 
+module "mongodb" {
+  # source         = "../../terraform-aws-sggroup2"
+  source         = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
+  project        = var.project
+  environment    = var.environment
+  sg_name        = "mongodb"
+  sg_description = "for mongodb"
+  vpc_id         = local.vpc_id
+
+}
+
+
+## Mongodb accepting connections from vpn  ( 22 and 27017)
+
+resource "aws_security_group_rule" "mongodb_vpn_ssh" {
+  count                    = length(var.mongodb_ports_vpn)
+  type                     = "ingress"
+  from_port                = var.mongodb_ports_vpn[count.index]
+  to_port                  = var.mongodb_ports_vpn[count.index]
+  protocol                 = "tcp"
+  source_security_group_id = module.vpn.sg_id
+  security_group_id        = module.mongodb.sg_id
+}
+
+#############################################################################################################
+
+## redis Security groups
+
+module "redis" {
+  # source         = "../../terraform-aws-sggroup2"
+  source         = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
+  project        = var.project
+  environment    = var.environment
+  sg_name        = "redis"
+  sg_description = "for redis"
+  vpc_id         = local.vpc_id
+
+}
+
+## ## redis accepting connections from vpn  ( 22 and 6379 )
+
+resource "aws_security_group_rule" "redis_vpn_ssh" {
+  count                    = length(var.redis_ports_vpn)
+  type                     = "ingress"
+  from_port                = var.redis_ports_vpn[count.index]
+  to_port                  = var.redis_ports_vpn[count.index]
+  protocol                 = "tcp"
+  source_security_group_id = module.vpn.sg_id
+  security_group_id        = module.redis.sg_id
+}
+
+
+
+##################################################################################################################
+
+
+## mysql  Security groups
+
+module "mysql" {
+  # source         = "../../terraform-aws-sggroup2"
+  source         = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
+  project        = var.project
+  environment    = var.environment
+  sg_name        = "mysql"
+  sg_description = "for mysql"
+  vpc_id         = local.vpc_id
+
+}
+
+
+## PORTS 22 , 3306 
+
+resource "aws_security_group_rule" "mysql_vpn_ssh" {
+  count                    = length(var.mysql_ports_vpn)
+  type                     = "ingress"
+  from_port                = var.mysql_ports_vpn[count.index]
+  to_port                  = var.mysql_ports_vpn[count.index]
+  protocol                 = "tcp"
+  source_security_group_id = module.vpn.sg_id
+  security_group_id        = module.mysql.sg_id
+}
+
+
+
+#########################################################################################################################
+
+## rabbitmq  Security groups
+
+module "rabbitmq" {
+  # source         = "../../terraform-aws-sggroup2"
+  source         = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
+  project        = var.project
+  environment    = var.environment
+  sg_name        = "rabbitmq"
+  sg_description = "for rabbitmq"
+  vpc_id         = local.vpc_id
+
+}
+
+
+
+# ports 22 , 5672 
+
+
+resource "aws_security_group_rule" "rabbitmq_vpn_ssh" {
+  count                    = length(var.rabbitmq_ports_vpn)
+  type                     = "ingress"
+  from_port                = var.rabbitmq_ports_vpn[count.index]
+  to_port                  = var.rabbitmq_ports_vpn[count.index]
+  protocol                 = "tcp"
+  source_security_group_id = module.vpn.sg_id
+  security_group_id        = module.rabbitmq.sg_id
+}
+
+
+
+##################################################################################################################################
