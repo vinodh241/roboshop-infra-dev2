@@ -255,3 +255,65 @@ resource "aws_security_group_rule" "rabbitmq_vpn_ssh" {
 
 
 ##################################################################################################################################
+
+## components 
+
+## catalogue
+
+module "catalogue" {
+  # source         = "../../terraform-aws-sggroup2"
+  source         = "git::https://github.com/vinodh241/terraform-aws-sggroup2.git?ref=main"
+  project        = var.project
+  environment    = var.environment
+  sg_name        = "catalogue"
+  sg_description = "for catalogue"
+  vpc_id         = local.vpc_id
+
+}
+
+resource "aws_security_group_rule" "catalogue_backend_alb" {
+  type                     = "ingress"
+  from_port                = 8080
+  to_port                  = 8080
+  protocol                 = "tcp"
+  source_security_group_id = module.backend_alb.sg_id
+  security_group_id        = module.catalogue.sg_id
+}
+
+resource "aws_security_group_rule" "catalogue_vpn_ssh" {
+  type                     = "ingress"
+  from_port                = 22
+  to_port                  = 22
+  protocol                 = "tcp"
+  source_security_group_id = module.vpn.sg_id
+  security_group_id        = module.catalogue.sg_id
+}
+
+resource "aws_security_group_rule" "catalogue_vpn_http" {
+  type                     = "ingress"
+  from_port                = 8080
+  to_port                  = 8080
+  protocol                 = "tcp"
+  source_security_group_id = module.vpn.sg_id
+  security_group_id        = module.catalogue.sg_id
+}
+
+resource "aws_security_group_rule" "catalogue_bastion" {
+  type                     = "ingress"
+  from_port                = 22
+  to_port                  = 22
+  protocol                 = "tcp"
+  source_security_group_id = module.bastion.sg_id
+  security_group_id        = module.catalogue.sg_id
+}
+
+resource "aws_security_group_rule" "mongodb_catalogue" {
+  type                     = "ingress"
+  from_port                = 27017
+  to_port                  = 27017
+  protocol                 = "tcp"
+  source_security_group_id = module.catalogue.sg_id
+  security_group_id        = module.mongodb.sg_id
+}
+
+##############################################################################################
