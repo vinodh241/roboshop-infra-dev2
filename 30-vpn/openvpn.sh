@@ -49,7 +49,7 @@ USERNAME="openvpn"
 PASSWORD="Openvpn@123"
 SCRIPTS="/usr/local/openvpn_as/scripts"
 
-# Ensure OpenVPN service is running
+# # Ensure OpenVPN service is running
 systemctl enable openvpnas
 systemctl start openvpnas
 
@@ -84,7 +84,7 @@ $SCRIPTS/sacli --key 'vpn.server.routing.gateway_access' --value 'true' ConfigPu
 # Save and apply all settings
 $SCRIPTS/sacli ConfigSync
 $SCRIPTS/sacli start
-systemctl restart openvpnas
+
 
 
 

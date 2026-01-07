@@ -1,6 +1,6 @@
 
 locals{
-    ami_id = data.aws_ami.openvpn.id
+    ami_id = "ami-015bde79b8dffa19b"
     vpn_sg_id = data.aws_ssm_parameter.vpn_sg_id.value
     public_subnet_id = split ("," , data.aws_ssm_parameter.public_subnet_ids.value)[0]
 
