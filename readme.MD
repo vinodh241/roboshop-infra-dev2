@@ -4,7 +4,8 @@
 * Terraform Provisioners
 * Terraform providers
 * Terraform workspace 
-* Terraform null resources 
+* Terraform null resources   
+   -- it will not create any resources , but it will just follow the life cycle of terraform.. ..# using to connet to the instances ) 
 * Terraform state
 * Terraform variables
 * Terraform locals
@@ -15,6 +16,7 @@
 # Ansible for configuration Management 
 
  1. Ansible pull concept 
+ * pulls playbooks form a version control systme and execute then on target host
 
 # AWS: ( Services) :
 

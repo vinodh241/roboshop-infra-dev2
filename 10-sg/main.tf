@@ -148,7 +148,6 @@ module "mongodb" {
 
 }
 
-
 ## Mongodb accepting connections from vpn  ( 22 and 27017)
 
 resource "aws_security_group_rule" "mongodb_vpn_ssh" {

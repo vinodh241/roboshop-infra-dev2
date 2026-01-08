@@ -28,6 +28,8 @@ $SCRIPTS/sacli --key 'vpn.server.routing.gateway_access' --value 'true' ConfigPu
 
 systemctl restart openvpnas
 
+echo "openvpn restarted"
+
 echo "==============================================="
 echo " OPENVPN ACCESS SERVER READY"
 echo " Admin UI : https://<PUBLIC-IP>:943/admin"
