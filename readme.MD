@@ -30,7 +30,7 @@
  7.  Elastic IP 
  8.  vpc-peering 
  9.  Load balancing 
- 10. Target groups 
+ 10. Target groups ( creating target groups and hnadover or attached to autoscaling groups)
  11. SSM parameter store
 
 # Databases:

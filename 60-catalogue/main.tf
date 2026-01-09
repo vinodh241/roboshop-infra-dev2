@@ -22,6 +22,8 @@ resource "aws_lb_target_group" "catalogue" {
 #############################################################################
 ## creating catalogue instances
 
+
+
 resource "aws_instance" "catalogue" {
   ami           = local.ami_id
   instance_type = "t3.micro"
@@ -53,8 +55,11 @@ resource "terraform_data" "catalogue" {
     host     = aws_instance.catalogue.private_ip
   }
 
-  provisioner "remote-exec" {
+   provisioner "remote-exec" {
     inline = [
+      "ls -l /tmp/catalogue.sh",
+      "sleep 5",
+      "sed -i 's/\r$//' /tmp/catalogue.sh",
       "chmod +x /tmp/catalogue.sh",
       "sudo sh /tmp/catalogue.sh catalogue"
     ]

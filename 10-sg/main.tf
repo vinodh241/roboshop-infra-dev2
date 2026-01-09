@@ -269,6 +269,8 @@ module "catalogue" {
 
 }
 
+# catalogue ports 22, 22 for bastion, 8080 for 
+
 resource "aws_security_group_rule" "catalogue_vpn_ssh" {
   type              = "ingress"
   from_port         = 22
@@ -305,5 +307,15 @@ resource "aws_security_group_rule" "catalogue_backend_alb" {
   security_group_id = module.catalogue.sg_id
 }
 
+
+
+resource "aws_security_group_rule" "mongodb_catalogue" {
+  type              = "ingress"
+  from_port         = 27017
+  to_port           = 27017
+  protocol          = "tcp"
+  source_security_group_id = module.catalogue.sg_id
+  security_group_id = module.mongodb.sg_id
+}
 
 ##############################################################################################
