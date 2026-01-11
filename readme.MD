@@ -1,12 +1,4 @@
 
-# Roboshop #
-------------
-By using shell-script creating instances and configuring env ,deploying the source code to Target environment
-
-Its basically 3 tier architecture 
-
-# Frontend( web tier)
-
 # Roboshop infra #
 -----------------
 
