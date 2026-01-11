@@ -1,9 +1,9 @@
-# Roboshop infra creation using Terraform + Ansible 
-------------------------------------------------------------------------------------------------------------------------------
+# Roboshop infra #
+-----------------
+
  By using Terraform , AWS cloud , Shell , Ansible  creating instances and configuring env ,deploying to Target environments
 
 # TERRAFORM:
-
 
 * Terraform Modules
 * Terraform Provisioners
