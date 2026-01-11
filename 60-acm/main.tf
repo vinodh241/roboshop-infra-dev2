@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "vinodh" {
-  domain_name       = "*.vinodh.site"
+  domain_name       = "*.${var.zone_name}"
   validation_method = "DNS"
 
   tags = merge(
