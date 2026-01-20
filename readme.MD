@@ -11,7 +11,7 @@
 * Terraform providers
 * Terraform workspace 
 * Terraform null resources   
-   -- it will not create any resources , but it will just follow the life cycle of terraform.. ..# using to connet to the instances ) 
+   -- it will not create any resources , but it will just follow the life cycle of terraform.. ..# using to connet to the instances 
 * Terraform state
 * Terraform variables
 * Terraform locals
