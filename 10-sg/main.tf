@@ -614,7 +614,10 @@ resource "aws_security_group_rule" "rabbitmq_payment" {
   security_group_id = module.rabbitmq.sg_id
 }
 
+###########################################################################################
 #Catalogue
+###########################################################################################
+
 # resource "aws_security_group_rule" "catalogue_vpn_ssh" {
 #   type              = "ingress"
 #   from_port         = 22
