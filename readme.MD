@@ -38,6 +38,7 @@
  9.  Load balancing 
  10. Target groups ( creating target groups and hnadover or attached to autoscaling groups)
  11. SSM parameter store
+ 12. ACM ( Aws certificate Manager) 
 
 # Databases:
 
