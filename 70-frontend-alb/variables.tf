@@ -1,6 +1,6 @@
 variable "project" {
-    default = "roboshop"
-  
+  default = "roboshop"
+
 }
 
 variable "environment" {
@@ -9,10 +9,10 @@ variable "environment" {
 
 variable "zone_id" {
   default = "Z0745757KP2VOJQE63F"
-  
+
 }
 
 variable "zone_name" {
   default = "vinodh.site"
-  
+
 }

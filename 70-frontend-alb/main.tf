@@ -1,19 +1,19 @@
 module "frontend_alb" {
-  source = "terraform-aws-modules/alb/aws"
-     version = "9.16.0"
+  source   = "terraform-aws-modules/alb/aws"
+  version  = "9.16.0"
   internal = false
 
-  name    = "${var.project}-${var.environment}-frontend-alb"  ## roboshop-dev-backrend-alb
-  vpc_id  = local.vpc_id
-  subnets = local.public_subnet_ids
-  create_security_group = false 
-  security_groups = [local.frontend_alb_sg_id]
+  name                       = "${var.project}-${var.environment}-frontend-alb" ## roboshop-dev-backrend-alb
+  vpc_id                     = local.vpc_id
+  subnets                    = local.public_subnet_ids
+  create_security_group      = false
+  security_groups            = [local.frontend_alb_sg_id]
   enable_deletion_protection = false
-  
+
   tags = merge(
     local.common_tags,
     {
-        Name = "${var.project}-${var.environment}-frontend-alb"
+      Name = "${var.project}-${var.environment}-frontend-alb"
     }
   )
 }
@@ -38,6 +38,7 @@ resource "aws_lb_listener" "frontend_alb" {
     }
   }
 }
+
 ###########################################################################
 
 # Rt53 records 
