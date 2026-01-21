@@ -320,7 +320,7 @@ resource "aws_security_group_rule" "mongodb_catalogue" {
 
 # ##############################################################################################
 
-## copied form git daws-84) 
+## copied form git 
 
 module "mongodb" {
     #source = "../../terraform-aws-securitygroup"
@@ -952,7 +952,7 @@ resource "aws_security_group_rule" "vpn_943" {
   security_group_id = module.vpn.sg_id
 }
 
-# backend ALB accepting connections from my bastion host on port no 80
+#backend ALB accepting connections from my bastion host on port no 80
 # resource "aws_security_group_rule" "backend_alb_bastion" {
 #   type              = "ingress"
 #   from_port         = 80
