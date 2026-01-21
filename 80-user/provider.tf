@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket       = "vinodh-remote-state-dev"
-    key          = "roboshop-dev-frontend-alb"
+    key          = "roboshop-dev-user"
     region       = "us-east-1"
     encrypt      = true
     use_lockfile = true
