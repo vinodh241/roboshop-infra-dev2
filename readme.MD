@@ -4,6 +4,8 @@
 
  By using Terraform , AWS cloud , Shell , Ansible  creating instances and configuring env ,deploying to Target environments
 
+ * Bastion server --> ( jump box/ server)
+
 # TERRAFORM:
 
 * Terraform Modules
