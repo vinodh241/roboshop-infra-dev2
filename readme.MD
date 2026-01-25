@@ -46,8 +46,9 @@
         * provider = aws.prod #for prod
 
   * * ( suppose if you want to create for dev)
-    * aws configure --profile dev
-    * aws configure --profile prod
+
+        * aws configure --profile dev
+        * aws configure --profile prod
 
   # someone pollouted the resources manually in AWS. How to manage this?
   --------------------------------------------------------------------------
