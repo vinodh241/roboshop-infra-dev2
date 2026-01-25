@@ -60,14 +60,21 @@
   # Infra created Manually , how can you manage that with terraform ?
   --------------------------------------------------------------------------
 
-    * Actuall process with terraform is-> write ( .tf files ) with this create infra in AWS then store in (.sate ) files   
+       * Actuall process with terraform is-> write ( .tf files ) with this create infra in AWS then store in (.sate ) files   
 
   * terraform import 
     ---------------
     * infra is in aws   --> you need to get that into .tf files 
     1. write a provider
-    2. write a resource block with no arguments
+    2. write a resource block with no arguments , then terraform init 
     3. then terraform import 
+
+    ----------------------------------------------------------------------------------------------------- 
+      * terraform import aws_instance.<name of the instance> <instance_id>  # run this command 
+      ---------------------------------------------------------------------------------------------------
+
+        * once import done copy the values from state file and create as per instance creation
+     
     4. then terraform fetch all the data about resources into a state file 
   
 
