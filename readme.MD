@@ -29,7 +29,7 @@
 
 
   * we have to mention in provider like
-  
+
         provider {
          alias = dev
          profile = dev
@@ -42,8 +42,8 @@
 
     * in sg group we have mention 
 
-      provider = aws.dev # for dev
-      provider = aws.prod # for prod
+        provider = aws.dev #for dev
+        provider = aws.prod #for prod
 
   * * ( suppose if you want to create for dev)
     * aws configure --profile dev
