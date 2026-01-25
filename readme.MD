@@ -57,6 +57,20 @@
 
         * terraform taint  --> it modifes the terraform state file ( as if it were missing or invalid terraform will destroy the old resources and create a new based on your current configuration )
 
+  # Infra created Manually , how can you manage that with terraform ?
+  --------------------------------------------------------------------------
+
+    * Actuall process with terraform is-> wrote ( .tf files ) with this create infra in AWS then store in (.sate ) files   
+
+  * terraform import 
+    ---------------
+    * infra is in aws   --> you need to get that into .tf files 
+    1. write a provider
+    2. write a resource block with no arguments
+    3. then terraform import 
+    4. then terraform fetch all the data about resources into a state file 
+  
+
 # changes for pertuclur components 
 * if you want to change only one component ( terraform plan -target='module.component["catalogue"]')
 
