@@ -49,7 +49,14 @@
 3. mysql
 4. rabbitmq
 
-#
+# CI/CD 
+* Jenkins
+
+# Monitoring Tools
+
+* Promotheous 
+* Grafana
+
 
 
 
