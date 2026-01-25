@@ -19,6 +19,35 @@
 * Terraform locals
 * Terraform data sources
 
+# How to create resources  in multiple aws accounts 
+
+  * * ( Need two aws accounts )
+
+    * ex:  dev , staging , uat , prod 
+
+  * one aws account --> one provider --> ( .aws/credentials)
+
+
+  * we have to mention in provider like
+    ex: provider {
+        alias = dev
+        profile = dev
+      }
+
+         provider {
+        alias = prod
+        profile = prod
+      }
+
+    * in sg group we have mention 
+
+      provider = aws.dev # for dev
+      provider = aws.prod # for prod
+
+  * * ( suppose if you want to create for dev)
+    * aws configure --profile dev
+    * aws configure --profile prod
+
 # changes for pertuclur components 
 * if you want to change only one component ( terraform plan -target='module.component["catalogue"]')
 
@@ -46,6 +75,7 @@
  12. ACM ( Aws certificate Manager) 
  13. CDN 
     * ( content delivery network )--> cache management
+
 
 # Databases:
 
