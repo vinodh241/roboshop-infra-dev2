@@ -70,10 +70,10 @@
     3. then terraform import 
 
     ----------------------------------------------------------------------------------------------------- 
-      * terraform import aws_instance.<name of the instance> <instance_id>  # run this command 
+               terraform import aws_instance.<name of the instance> <instance_id>  # run this command 
       ---------------------------------------------------------------------------------------------------
 
-        * once import done copy the values from state file and create as per instance creation
+    * once import done copy the values from state file and create as per instance creation
      
     4. then terraform fetch all the data about resources into a state file 
   
