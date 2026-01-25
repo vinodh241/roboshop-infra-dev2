@@ -60,7 +60,7 @@
   # Infra created Manually , how can you manage that with terraform ?
   --------------------------------------------------------------------------
 
-    * Actuall process with terraform is-> wrote ( .tf files ) with this create infra in AWS then store in (.sate ) files   
+    * Actuall process with terraform is-> write ( .tf files ) with this create infra in AWS then store in (.sate ) files   
 
   * terraform import 
     ---------------
