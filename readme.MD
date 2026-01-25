@@ -13,11 +13,14 @@
 * Terraform providers
 * Terraform workspace 
 * Terraform null resources   
-   -- it will not create any resources , but it will just follow the life cycle of terraform.. ..# using to connet to the instances 
+   -- it will not create any resources , but it will just follow the life cycle of terraform ( like plan, destroy ).. ..# using to connet to the instances 
 * Terraform state
 * Terraform variables
 * Terraform locals
 * Terraform data sources
+
+# changes for pertuclur components 
+* if you want to change only one component ( terraform plan -target='module.component["catalogue"]')
 
 
 
