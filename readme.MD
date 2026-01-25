@@ -29,15 +29,16 @@
 
 
   * we have to mention in provider like
-    ex: provider {
-        alias = dev
-        profile = dev
-      }
+    ex:
+        provider {
+         alias = dev
+         profile = dev
+          }
 
-         provider {
+        provider {
         alias = prod
         profile = prod
-      }
+          }
 
     * in sg group we have mention 
 
