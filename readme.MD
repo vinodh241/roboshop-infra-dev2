@@ -29,7 +29,7 @@
 
 
   * we have to mention in provider like
-    ex:
+  
         provider {
          alias = dev
          profile = dev
