@@ -72,11 +72,10 @@
     ----------------------------------------------------------------------------------------------------- 
                terraform import aws_instance.<name of the instance> <instance_id>  # run this command 
       ---------------------------------------------------------------------------------------------------
+    4. then terraform fetch all the data about resources into a state file 
 
     * once import done copy the values from state file and create as per instance creation
      
-    4. then terraform fetch all the data about resources into a state file 
-  
 
 # changes for pertuclur components 
 * if you want to change only one component ( terraform plan -target='module.component["catalogue"]')
