@@ -1,12 +1,13 @@
 
 # Roboshop infra # By VINODH AVALA 
------------------
+-------------------------------------------------------------------------------
 
  By using Terraform , AWS cloud , Shell , Ansible  creating instances and configuring env ,deploying to Target environments
 
  * Bastion server --> ( jump box/ server)
 
 # TERRAFORM:
+-----------------------------------------------------------------------------------
 
 * Terraform Modules
 * Terraform Provisioners
@@ -20,7 +21,7 @@
 * Terraform data sources
 
 # How to create resources  in multiple aws accounts 
-----------------------------------------------------------------
+-------------------------------------------------------------------------------------
   * * ( Need two aws accounts ) 
 
     * ex:  dev , staging , uat , prod 
@@ -51,14 +52,14 @@
         * aws configure --profile prod
 
   # someone pollouted the resources manually in AWS. How to manage this?
-  --------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------
 
    * Terraform taint  --> force AWS to create the resources 
 
         * terraform taint  --> it modifes the terraform state file ( as if it were missing or invalid terraform will destroy the old resources and create a new based on your current configuration )
 
   # Infra created Manually , how can you manage that with terraform ?
-  --------------------------------------------------------------------------
+  -----------------------------------------------------------------------------------
 
        * Actuall process with terraform is-> write ( .tf files ) with this create infra in AWS then store in (.sate ) files   
 
@@ -83,11 +84,13 @@
 
 
 # Ansible for configuration Management 
+--------------------------------------------------------------------------------------
 
  1. Ansible pull concept 
  * pulls playbooks form a version control systme and execute them on target hosts
 
 # AWS: ( Services) :
+---------------------------------------------------------------------------------------
 
  1.  VPC 
  2.  subnets
@@ -107,6 +110,7 @@
 
 
 # Databases:
+--------------------------------------------------------------------------------------------
 
 1. redis
 2. mongodb
@@ -114,9 +118,11 @@
 4. rabbitmq
 
 # CI/CD 
+--------------------------------------------------------------------------------------------
 * Jenkins
 
 # Monitoring Tools
+----------------------------------------------------------------------------------------------
 
 * Promotheous 
 * Grafana
