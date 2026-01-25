@@ -20,8 +20,8 @@
 * Terraform data sources
 
 # How to create resources  in multiple aws accounts 
-
-  * * ( Need two aws accounts )
+----------------------------------------------------------------
+  * * ( Need two aws accounts ) 
 
     * ex:  dev , staging , uat , prod 
 
@@ -47,6 +47,13 @@
   * * ( suppose if you want to create for dev)
     * aws configure --profile dev
     * aws configure --profile prod
+
+  # someone pollouted the resources manually in AWS. How to manage this?
+  --------------------------------------------------------------------------
+
+   * Terraform taint  --> force AWS to create the resources 
+
+        * terraform taint  --> it modifes the terraform state file ( as if it were missing or invalid terraform will destroy the old resources and create a new based on your current configuration )
 
 # changes for pertuclur components 
 * if you want to change only one component ( terraform plan -target='module.component["catalogue"]')
