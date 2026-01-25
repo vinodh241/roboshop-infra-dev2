@@ -78,9 +78,19 @@
     * once import done copy the values from state file and create as per instance creation
      
 
-# changes for pertuclur components 
+*  changes for pertuclur components 
+  ------------------------------------------------------------------------------------------------------
+
 * if you want to change only one component ( terraform plan -target='module.component["catalogue"]')
 
+# Terraform life-cycle
+  
+        lifecycle {
+        create_before_destroy = true
+        }
+   1. terraform will create another resource
+   2. replace sg in instance with new sg 
+   3. them it will remove old sg 
 
 
 # Ansible for configuration Management 
