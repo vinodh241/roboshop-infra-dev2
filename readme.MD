@@ -45,6 +45,8 @@
  11. SSM parameter store
  12. ACM ( Aws certificate Manager) 
  13. CDN 
+    * ( content delivery network )--> cache management
+
 # Databases:
 
 1. redis
