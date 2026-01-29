@@ -2,6 +2,8 @@
 # Roboshop infra # By VINODH AVALA 
 -------------------------------------------------------------------------------
 
+Terraform provisions infrastructure, Ansible configures systems, Docker packages applications, and Kubernetes manages application runtime. Terraform is not suitable for deployments because it is state-driven and not designed for continuous runtime management, scaling, or self-healing. Kubernetes is built exactly for that purpos
+
  By using Terraform , AWS cloud , Shell , Ansible  creating instances and configuring env ,deploying to Target environments
 
  * Bastion server --> ( jump box/ server)
