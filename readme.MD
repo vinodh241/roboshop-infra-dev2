@@ -1,6 +1,6 @@
 
-# Roboshop infra # By VINODH AVALA 
--------------------------------------------------------------------------------
+# Roboshop infra using by Terraform # VINODH AVALA 
+---------------------------------------------------------
 
 Terraform provisions infrastructure, Ansible configures systems, Docker packages applications, and Kubernetes manages application runtime. Terraform is not suitable for deployments because it is state-driven and not designed for continuous runtime management, scaling, or self-healing. Kubernetes is built exactly for that purpose
 
@@ -86,6 +86,7 @@ Terraform provisions infrastructure, Ansible configures systems, Docker packages
 * if you want to change only one component ( terraform plan -target='module.component["catalogue"]')
 
 # Terraform life-cycle
+-------------------------
   
         lifecycle {
         create_before_destroy = true
